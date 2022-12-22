@@ -6,3 +6,5 @@ default-font.js which contains a font variable named `font`. (Very creative name
 
 To use it you can simply include https://cdn.jsdelivr.net/gh/RandomGamingDev/Pixyp5js/pixy.js (This is the Pixy library that BasicPixyTextp5js relies on) and https://cdn.jsdelivr.net/gh/RandomGamingDev/BasicPixyTextp5js/basicpixytext.js in your HTML file!
 If you want to you can also just download the file and include it in your HTML file that way.
+
+To include the default font simply do the same thing with https://cdn.jsdelivr.net/gh/RandomGamingDev/BasicPixyTextp5js/default-font.js.
