@@ -26,9 +26,8 @@ function RenderText(pixy, text, color, font, spacing, cusor = [0, 0]) {
       for (let k = 0; k < char[0].length; k++)
         if (char[j][k])
           pixy.pixels[cursor[0] + k][cursor[1] + j] = color;
-    let charWidth = char[0].length + spacing[0];
-    cursor[0] += charWidth;
-    if (cursor[0] >= pixy.pixels.length)
+    cursor[0] += char[0].length + spacing[0];
+    if (cursor[0] + char[0].length >= pixy.pixels.length)
       CarriageReturn(cursor, char.length, spacing);
   }
 }
