@@ -31,3 +31,20 @@ function RenderText(pixy, text, color, font, spacing, cursor = [0, 0]) {
       CarriageReturn(cursor, char.length, spacing);
   }
 }
+
+function RenderTextLinkedList(pixy, text, color, font, spacing, cursor = [0, 0]) {
+  for (let i = text.head; i != null; i = i.next) {
+    let char = font.get(i);
+    if (i == '\n') {
+      CarriageReturn(cursor, font.get(' ').length, spacing);
+      continue;
+    }
+    for (let j = 0; j < char.length; j++)
+      for (let k = 0; k < char[0].length; k++)
+        if (char[j][k])
+          pixy.pixels[cursor[0] + k][cursor[1] + j] = color;
+    cursor[0] += char[0].length + spacing[0];
+    if (cursor[0] + char[0].length >= pixy.pixels.length)
+      CarriageReturn(cursor, char.length, spacing);
+  }
+}
