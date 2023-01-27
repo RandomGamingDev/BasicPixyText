@@ -34,8 +34,8 @@ function RenderText(pixy, text, color, font, spacing, cursor = [0, 0]) {
 
 function RenderTextLinkedList(pixy, text, color, font, spacing, cursor = [0, 0]) {
   for (let i = text.head; i != null; i = i.next) {
-    let char = font.get(i);
-    if (i == '\n') {
+    let char = font.get(i.data);
+    if (i.data == '\n') {
       CarriageReturn(cursor, font.get(' ').length, spacing);
       continue;
     }
