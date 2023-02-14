@@ -10,3 +10,5 @@ If you want to you can also just download the file and include it in your HTML f
 To include the default font simply do the same thing with https://cdn.jsdelivr.net/gh/RandomGamingDev/BasicPixyTextp5js/default-font.js.
 
 https://github.com/RandomGamingDev/OneWayLinkedListLibJs or https://github.com/RandomGamingDev/DoubleLinkedListLibJs/tree/main are dependencies if you want to use `RenderTextLinkedList`. To use it you can simply include https://cdn.jsdelivr.net/gh/RandomGamingDev/OneWayLinkedListLibJs/list.js or https://cdn.jsdelivr.net/gh/RandomGamingDev/DoubleLinkedListLibJs/list.js in your HTML file! If you want to you can also just download the file and include it in your HTML file that way.
+
+btw stuff updates so remember to specify a version/commit for your library if you want to use a link and don't want your code to automatically update to the newest version of the library
