@@ -24,9 +24,9 @@ function RendChar(char, pixy, color, font, spacing, cursor = [0, 0]) {
   for (let i = 0; i < rendChar.length; i++)
     for (let j = 0; j < rendChar[0].length; j++)
       if (rendChar[i][j])
-        pixy.pixels[cursor[0] + j][cursor[1] + i] = color;
+        pixy.setPixel([cursor[0] + j, cursor[1] + i], color);
   cursor[0] += rendChar[0].length + spacing[0];
-  if (cursor[0] + rendChar[0].length >= pixy.pixels.length)
+  if (cursor[0] + rendChar[0].length >= pixy.res[0])
     CarriageReturn(cursor, rendChar.length, spacing);
 }
 
