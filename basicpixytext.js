@@ -15,36 +15,35 @@ function CarriageReturn(cursor, height, spacing) {
   cursor[1] += height + spacing[1];
 }
 
-function RenderText(pixy, text, color, font, spacing, cursor = [0, 0]) {
-  for (let i = 0; i < text.length; i++) {
-    let char = font.get(text[i]);
-    if (text[i] == '\n') {
-      CarriageReturn(cursor, font.get(' ').length, spacing);
-      continue;
-    }
-    for (let j = 0; j < char.length; j++)
-      for (let k = 0; k < char[0].length; k++)
-        if (char[j][k])
-          pixy.pixels[cursor[0] + k][cursor[1] + j] = color;
-    cursor[0] += char[0].length + spacing[0];
-    if (cursor[0] + char[0].length >= pixy.pixels.length)
-      CarriageReturn(cursor, char.length, spacing);
+function RendChar(char, pixy, color, font, spacing, cursor = [0, 0]) {
+  let rendChar = font.get(char);
+  if (char == '\n') {
+    CarriageReturn(cursor, font.get(' ').length, spacing);
+    return;
   }
+  for (let i = 0; i < rendChar.length; i++)
+    for (let j = 0; j < rendChar[0].length; j++)
+      if (rendChar[i][j])
+        pixy.pixels[cursor[0] + j][cursor[1] + i] = color;
+  cursor[0] += rendChar[0].length + spacing[0];
+  if (cursor[0] + rendChar[0].length >= pixy.pixels.length)
+    CarriageReturn(cursor, rendChar.length, spacing);
 }
 
-function RenderTextLinkedList(pixy, text, color, font, spacing, cursor = [0, 0]) {
-  for (let i = text.head; i != null; i = i.next) {
-    let char = font.get(i.data);
-    if (i.data == '\n') {
-      CarriageReturn(cursor, font.get(' ').length, spacing);
-      continue;
-    }
-    for (let j = 0; j < char.length; j++)
-      for (let k = 0; k < char[0].length; k++)
-        if (char[j][k])
-          pixy.pixels[cursor[0] + k][cursor[1] + j] = color;
-    cursor[0] += char[0].length + spacing[0];
-    if (cursor[0] + char[0].length >= pixy.pixels.length)
-      CarriageReturn(cursor, char.length, spacing);
+function RenderText(pixy, text, color, font, spacing, cursor = [0, 0], length = undefined) {
+  if (length == undefined)
+    length = text.length;
+  for (let i = 0; i < length; i++)
+    RendChar(text[i], pixy, color, font, spacing, cursor);
+}
+
+function RenderTextLinkedList(pixy, text, color, font, spacing, cursor = [0, 0], length = undefined) {
+  if (length == undefined)
+    length = text.length;
+  for (let i = text.head;; i = i.next) {
+    RendChar(i.data, pixy, color, font, spacing, cursor);
+    length--;
+    if (length < 1)
+      break;
   }
 }
