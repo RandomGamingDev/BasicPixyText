@@ -40,7 +40,7 @@ function RenderText(pixy, text, color, font, spacing, cursor = [0, 0], length = 
 function RenderTextLinkedList(pixy, text, color, font, spacing, cursor = [0, 0], length = undefined) {
   if (length == undefined)
     length = text.length;
-  for (let i = text.head;; i = i.next) {
+  for (let i = text.head; i != undefined; i = i.next) {
     RendChar(i.data, pixy, color, font, spacing, cursor);
     length--;
     if (length < 1)
