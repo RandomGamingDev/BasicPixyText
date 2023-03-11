@@ -18,7 +18,7 @@ function CarriageReturn(cursor, height, spacing) {
 function RendChar(char, pixy, color, font, spacing, cursor = [0, 0]) {
   let rendChar = font.get(char);
   if (rendChar == undefined)
-    rendChar = '?';
+    rendChar = font.get('?');
   if (char == '\n') {
     CarriageReturn(cursor, font.get(' ').length, spacing);
     return;
