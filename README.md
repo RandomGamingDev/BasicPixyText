@@ -1,6 +1,8 @@
 # BasicPixyTextp5js
 A basic pixelated text rendering library for p5 powered by [Pixyp5js](https://github.com/RandomGamingDev/Pixyp5js).
 
+<img src="BasicPixyTextp5js.png" width="512" />
+
 Create a font and load it using `LoadFont` and use `RenderText` or `RenderTextLinkedList` (if you're using the latter check below for more info) to render text. To design your font (or to be lazy) you can use
 default-font.js which contains a font variable named `font`. (Very creative name ik)
 Remember, to upload the rendered pixels you have to run `updatePixels()` on Pixy!
